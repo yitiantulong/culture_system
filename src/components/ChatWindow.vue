@@ -268,7 +268,8 @@ const renderMarkdown = (text: string): string => {
     return marked(text, {
       breaks: true, // 启用换行支持
       gfm: true, // 启用 GitHub 风格的 Markdown
-    })
+      async: false // 确保返回字符串而不是Promise
+    }) as string
   } catch (error) {
     console.error('Markdown 渲染错误:', error)
     return text
