@@ -3,6 +3,10 @@
     <div class="map-title">
       <h1>非物质文化遗产地图</h1>
     </div>
+    <div class="map-note">
+      <span class="note-icon">💡</span>
+      点击相应省份可查看具体数据
+    </div>
     <div class="map-content">
       <div class="map-wrapper">
         <div class="map-background">
@@ -20,12 +24,12 @@
                 <div class="error-message">{{ error }}</div>
                 <button class="retry-button" @click="fetchMapData">重试</button>
               </div>
+              <div class="map-footer-info">
+                <p>说明：数据来自国家文化和旅游行政主管部门公开信息，数据统计截至2025年3月13日。</p>
+                <p class="total-items">总计：{{ totalHeritageItems }} 项</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="map-note">
-          <span class="note-icon">💡</span>
-          点击相应省份可查看具体数据
         </div>
       </div>
       <div v-if="selectedProvince" class="province-stats">
@@ -63,16 +67,8 @@
             <div class="stat-number">{{ selectedProvince.stats.medicine || 0 }}</div>
             <div class="stat-label">传统医药</div>
           </div>
-          <div class="stat-item total">
-            <div class="stat-number">{{ calculateTotal(selectedProvince.stats) }}</div>
-            <div class="stat-label">民俗</div>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="map-footer">
-      <p>说明：数据来自国家文化和旅游行政主管部门公开信息，数据统计截至2025年3月13日。</p>
-      <p class="total-items">总计：{{ totalHeritageItems }} 项</p>
     </div>
   </div>
 </template>
@@ -118,70 +114,70 @@ const provinces: Record<string, Province> = {
   北京市: {
     name: '北京市',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 6,
-      sports: 4,
-      crafts: 7,
-      medicine: 2,
+      folk: 8,
+      music: 4,
+      dance: 9,
+      opera: 5,
+      art: 7,
+      sports: 12,
+      crafts: 41,
+      medicine: 9,
     },
     coordinates: [116.3912757, 39.906217],
   },
   上海市: {
     name: '上海市',
     stats: {
-      folk: 1,
-      music: 7,
+      folk: 2,
+      music: 9,
       dance: 4,
-      opera: 3,
+      opera: 7,
       art: 5,
-      sports: 3,
-      crafts: 6,
-      medicine: 2,
+      sports: 4,
+      crafts: 19,
+      medicine: 11,
     },
     coordinates: [121.4737, 31.2304],
   },
   广东省: {
     name: '广东省',
     stats: {
-      folk: 3,
-      music: 12,
-      dance: 8,
-      opera: 5,
-      art: 7,
-      sports: 6,
-      crafts: 9,
-      medicine: 4,
+      folk: 4,
+      music: 13,
+      dance: 32,
+      opera: 21,
+      art: 5,
+      sports: 5,
+      crafts: 18,
+      medicine: 10,
     },
     coordinates: [113.2592945, 23.1301964],
   },
   浙江省: {
     name: '浙江省',
     stats: {
-      folk: 2,
-      music: 9,
-      dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      folk: 24,
+      music: 15,
+      dance: 18,
+      opera: 25,
+      art: 28,
+      sports: 12,
+      crafts: 54,
+      medicine: 12,
     },
-    coordinates: [120.2052342, 30.2489634],
+    coordinates: [120.2052342, 29.2489634],
   },
   江苏省: {
     name: '江苏省',
     stats: {
-      folk: 2,
-      music: 10,
-      dance: 7,
-      opera: 5,
-      art: 7,
-      sports: 5,
-      crafts: 9,
-      medicine: 3,
+      folk: 11,
+      music: 21,
+      dance: 9,
+      opera: 22,
+      art: 10,
+      sports: 2,
+      crafts: 38,
+      medicine: 6,
     },
     coordinates: [119.1075773, 33.5524785],
   },
@@ -195,133 +191,133 @@ const provinces: Record<string, Province> = {
       art: 5,
       sports: 4,
       crafts: 7,
-      medicine: 2,
+      medicine: 6,
     },
-    coordinates: [119.2918215, 26.0774954],
+    coordinates: [118.2918215, 26.0774954],
   },
   山东省: {
     name: '山东省',
     stats: {
-      folk: 2,
-      music: 9,
-      dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      folk: 27,
+      music: 18,
+      dance: 13,
+      opera: 33,
+      art: 13,
+      sports: 15,
+      crafts: 19,
+      medicine: 6,
     },
-    coordinates: [117.0, 36.0],
+    coordinates: [118.0, 36.0],
   },
   河南省: {
     name: '河南省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
+      folk: 10,
+      music: 13,
+      dance: 10,
+      opera: 29,
       art: 5,
-      sports: 4,
-      crafts: 7,
-      medicine: 2,
+      sports: 10,
+      crafts: 14,
+      medicine: 6,
     },
-    coordinates: [113.6191483, 34.7487244],
+    coordinates: [113.6191483, 33.7487244],
   },
   湖北省: {
     name: '湖北省',
     stats: {
-      folk: 2,
-      music: 9,
-      dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      folk: 21,
+      music: 28,
+      dance: 12,
+      opera: 25,
+      art: 13,
+      sports: 4,
+      crafts: 10,
+      medicine: 6,
     },
-    coordinates: [114.2919, 30.5928],
+    coordinates: [113.2919, 30.5928],
   },
   湖南省: {
     name: '湖南省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
+      folk: 9,
+      music: 16,
+      dance: 13,
+      opera: 32,
+      art: 6,
       sports: 4,
-      crafts: 7,
-      medicine: 2,
+      crafts: 19,
+      medicine: 6,
     },
-    coordinates: [112.9834, 28.1141],
+    coordinates: [112.4834, 27.9111],
   },
   江西省: {
     name: '江西省',
     stats: {
-      folk: 2,
+      folk: 1,
       music: 7,
-      dance: 4,
-      opera: 3,
-      art: 4,
-      sports: 3,
-      crafts: 6,
-      medicine: 2,
+      dance: 11,
+      opera: 17,
+      art: 6,
+      sports: 1,
+      crafts: 21,
+      medicine: 1,
     },
-    coordinates: [115.8921, 28.6765],
+    coordinates: [115.8921, 27.6765],
   },
   安徽省: {
     name: '安徽省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
+      folk: 5,
+      music: 9,
+      dance: 10,
+      opera: 25,
+      art: 2,
       sports: 4,
-      crafts: 7,
-      medicine: 2,
+      crafts: 25,
+      medicine: 3,
     },
     coordinates: [117.2218033, 31.8228094],
   },
   陕西省: {
     name: '陕西省',
     stats: {
-      folk: 2,
-      music: 9,
+      folk: 7,
+      music: 15,
       dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      opera: 18,
+      art: 8,
+      sports: 2,
+      crafts: 12,
+      medicine: 2,
     },
     coordinates: [109.0861893, 34.53727],
   },
   山西省: {
     name: '山西省',
     stats: {
-      folk: 2,
-      music: 7,
-      dance: 4,
-      opera: 3,
-      art: 4,
-      sports: 3,
-      crafts: 6,
-      medicine: 2,
+      folk: 10,
+      music: 18,
+      dance: 14,
+      opera: 38,
+      art: 11,
+      sports: 6,
+      crafts: 35,
+      medicine: 8,
     },
-    coordinates: [112.5489, 37.8706],
+    coordinates: [112.5489, 36.8706],
   },
   河北省: {
     name: '河北省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
-      sports: 4,
-      crafts: 7,
-      medicine: 2,
+      folk: 5,
+      music: 23,
+      dance: 11,
+      opera: 36,
+      art: 9,
+      sports: 24,
+      crafts: 21,
+      medicine: 4,
     },
     coordinates: [114.5391, 38.0428],
   },
@@ -335,20 +331,20 @@ const provinces: Record<string, Province> = {
       art: 6,
       sports: 5,
       crafts: 6,
-      medicine: 3,
+      medicine: 12,
     },
-    coordinates: [126.5287796, 45.8016143],
+    coordinates: [126.5287796, 42.8016143],
   },
   辽宁省: {
     name: '辽宁省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
-      sports: 4,
-      crafts: 7,
+      folk: 6,
+      music: 9,
+      dance: 9,
+      opera: 10,
+      art: 12,
+      sports: 2,
+      crafts: 4,
       medicine: 2,
     },
     coordinates: [123.4315, 41.8057],
@@ -356,83 +352,83 @@ const provinces: Record<string, Province> = {
   黑龙江省: {
     name: '黑龙江省',
     stats: {
-      folk: 2,
-      music: 9,
-      dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      folk: 1,
+      music: 7,
+      dance: 1,
+      opera: 3,
+      art: 7,
+      sports: 1,
+      crafts: 6,
+      medicine: 2,
     },
     coordinates: [126.6424, 45.7574],
   },
   四川省: {
     name: '四川省',
     stats: {
-      folk: 3,
-      music: 11,
-      dance: 7,
-      opera: 5,
-      art: 7,
-      sports: 6,
-      crafts: 9,
-      medicine: 4,
+      folk: 7,
+      music: 23,
+      dance: 20,
+      opera: 11,
+      art: 6,
+      sports: 4,
+      crafts: 38,
+      medicine: 3,
     },
     coordinates: [104.0633717, 30.6598628],
   },
   云南省: {
     name: '云南省',
     stats: {
-      folk: 3,
-      music: 10,
-      dance: 7,
-      opera: 5,
-      art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      folk: 19,
+      music: 14,
+      dance: 30,
+      opera: 17,
+      art: 2,
+      sports: 2,
+      crafts: 24,
+      medicine: 6,
     },
-    coordinates: [102.7103, 25.0389],
+    coordinates: [101.7103, 24.0389],
   },
   贵州省: {
     name: '贵州省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
+      folk: 11,
+      music: 20,
+      dance: 17,
+      opera: 14,
+      art: 3,
       sports: 4,
-      crafts: 7,
-      medicine: 2,
+      crafts: 31,
+      medicine: 9,
     },
     coordinates: [106.7142, 26.5783],
   },
   青海省: {
     name: '青海省',
     stats: {
-      folk: 2,
-      music: 7,
-      dance: 4,
+      folk: 9,
+      music: 15,
+      dance: 9,
       opera: 3,
       art: 4,
       sports: 3,
-      crafts: 6,
-      medicine: 2,
+      crafts: 11,
+      medicine: 6,
     },
-    coordinates: [101.7761976, 36.617331],
+    coordinates: [97.7761976, 36.617331],
   },
   甘肃省: {
     name: '甘肃省',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
-      sports: 4,
-      crafts: 7,
+      folk: 7,
+      music: 12,
+      dance: 11,
+      opera: 11,
+      art: 7,
+      sports: 1,
+      crafts: 12,
       medicine: 2,
     },
     coordinates: [103.8318566, 36.0620781],
@@ -440,56 +436,56 @@ const provinces: Record<string, Province> = {
   新疆维吾尔自治区: {
     name: '新疆',
     stats: {
-      folk: 3,
-      music: 12,
-      dance: 8,
-      opera: 5,
-      art: 7,
-      sports: 6,
-      crafts: 9,
-      medicine: 4,
+      folk: 19,
+      music: 28,
+      dance: 16,
+      opera: 0,
+      art: 5,
+      sports: 9,
+      crafts: 25,
+      medicine: 7,
     },
     coordinates: [87.6139038, 43.8244074],
   },
   西藏自治区: {
     name: '西藏',
     stats: {
-      folk: 2,
-      music: 8,
-      dance: 5,
-      opera: 4,
-      art: 5,
-      sports: 4,
-      crafts: 7,
-      medicine: 3,
+      folk: 3,
+      music: 6,
+      dance: 33,
+      opera: 9,
+      art: 1,
+      sports: 2,
+      crafts: 18,
+      medicine: 9,
     },
     coordinates: [94.3602321, 29.6510453],
   },
   内蒙古自治区: {
     name: '内蒙古',
     stats: {
-      folk: 2,
-      music: 9,
-      dance: 6,
-      opera: 4,
+      folk: 8,
+      music: 23,
+      dance: 5,
+      opera: 5,
       art: 6,
-      sports: 5,
-      crafts: 8,
-      medicine: 3,
+      sports: 9,
+      crafts: 15,
+      medicine: 7,
     },
     coordinates: [111.6730788, 40.8337963],
   },
   广西壮族自治区: {
     name: '广西',
     stats: {
-      folk: 2,
+      folk: 6,
       music: 9,
-      dance: 6,
-      opera: 4,
-      art: 6,
-      sports: 5,
+      dance: 9,
+      opera: 7,
+      art: 3,
+      sports: 1,
       crafts: 8,
-      medicine: 3,
+      medicine: 1,
     },
     coordinates: [108.3207, 22.8152],
   },
@@ -497,27 +493,27 @@ const provinces: Record<string, Province> = {
     name: '宁夏',
     stats: {
       folk: 1,
-      music: 6,
-      dance: 4,
-      opera: 3,
-      art: 4,
-      sports: 3,
-      crafts: 5,
-      medicine: 2,
+      music: 3,
+      dance: 1,
+      opera: 1,
+      art: 1,
+      sports: 0,
+      crafts: 7,
+      medicine: 4,
     },
     coordinates: [106.2719, 38.4681],
   },
   海南省: {
     name: '海南省',
     stats: {
-      folk: 1,
-      music: 6,
-      dance: 4,
-      opera: 3,
-      art: 4,
-      sports: 3,
-      crafts: 5,
-      medicine: 2,
+      folk: 0,
+      music: 11,
+      dance: 3,
+      opera: 6,
+      art: 0,
+      sports: 0,
+      crafts: 12,
+      medicine: 0,
     },
     coordinates: [110.3487, 20.0179],
   },
@@ -593,13 +589,12 @@ async function fetchMapData() {
 }
 
 function drawMap(ctx: CanvasRenderingContext2D) {
-  // 设置背景
-  ctx.fillStyle = '#2b0000'
-  ctx.fillRect(0, 0, 800, 600)
+  // 清除画布并设置透明背景
+  ctx.clearRect(0, 0, 1000, 700)
 
   // 如果有地图数据，绘制地图轮廓
   if (mapData.value) {
-    ctx.strokeStyle = '#d4b895'
+    ctx.strokeStyle = '#8b572a'
     ctx.lineWidth = 2
     ctx.fillStyle = 'rgba(87, 4, 4, 0.3)'
 
@@ -643,7 +638,7 @@ function drawMap(ctx: CanvasRenderingContext2D) {
     // 绘制数据点
     ctx.beginPath()
     ctx.arc(x, y, size, 0, Math.PI * 2)
-    ctx.fillStyle = isActive ? '#ffffff' : '#d4b895'
+    ctx.fillStyle = isActive ? '#ffffff' : '#f0e5d8'
     ctx.fill()
     ctx.strokeStyle = isActive ? '#ffffff' : '#570404'
     ctx.lineWidth = isActive ? 3 : 2
@@ -651,7 +646,7 @@ function drawMap(ctx: CanvasRenderingContext2D) {
 
     // 绘制省份名称
     ctx.fillStyle = isActive ? '#ffffff' : '#d4b895'
-    ctx.font = isActive ? 'bold 16px sans-serif' : '14px sans-serif'
+    ctx.font = isActive ? 'bold 14px sans-serif' : '12px sans-serif'
     ctx.textAlign = 'center'
     ctx.fillText(province.name, x, y - 15)
 
@@ -693,9 +688,9 @@ function transformCoordinates([lon, lat]: [number, number]): [number, number] {
     north: 53.5,
   }
 
-  // 转换为画布坐标
-  const x = ((lon - bounds.west) / (bounds.east - bounds.west)) * 700 + 50
-  const y = ((bounds.north - lat) / (bounds.north - bounds.south)) * 500 + 50
+  // 转换为画布坐标，增加缩放比例使地图更大
+  const x = ((lon - bounds.west) / (bounds.east - bounds.west)) * 800 + 30
+  const y = ((bounds.north - lat) / (bounds.north - bounds.south)) * 600 + 30
 
   return [x, y]
 }
@@ -802,7 +797,9 @@ function initializeMap() {
 .heritage-map-container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #2b0000, #570404);
+  /*background: linear-gradient(to bottom, #2b0000, #570404);*/
+  background: url('@/assets/mappicture.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #d4b895;
   padding: 2rem;
   display: flex;
@@ -812,13 +809,14 @@ function initializeMap() {
 
 .map-title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .map-title h1 {
   font-size: 2.5rem;
   color: #d4b895;
   margin: 0;
+  font-family: '楷体', cursive;
   padding: 1rem 2rem;
   border: 2px solid #d4b895;
   display: inline-block;
@@ -843,10 +841,28 @@ function initializeMap() {
   right: -2rem;
 }
 
+.map-note {
+  text-align: center;
+  color: #d4b895;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(87, 4, 4, 0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.note-icon {
+  font-size: 1.2rem;
+}
+
 .map-content {
   display: flex;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .map-wrapper {
@@ -920,30 +936,24 @@ function initializeMap() {
   background-color: rgba(212, 184, 149, 0.1);
 }
 
-.map-footer {
-  text-align: center;
-  margin-top: 2rem;
+.map-footer-info {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   color: #d4b895;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  max-width: 400px;
+  opacity: 0.9;
 }
 
-.total-items {
-  margin-top: 0.5rem;
+.map-footer-info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.map-footer-info .total-items {
+  margin-top: 4px;
   font-weight: bold;
-}
-
-@media (max-width: 1200px) {
-  .map-content {
-    flex-direction: column;
-  }
-
-  .map-wrapper {
-    min-width: 100%;
-  }
-
-  .province-stats {
-    width: 100%;
-  }
 }
 
 .loading-overlay,
@@ -998,23 +1008,5 @@ function initializeMap() {
   to {
     transform: rotate(360deg);
   }
-}
-
-.map-note {
-  margin-top: 1rem;
-  text-align: center;
-  color: #d4b895;
-  font-size: 1rem;
-  padding: 0.5rem;
-  background-color: rgba(87, 4, 4, 0.3);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.note-icon {
-  font-size: 1.2rem;
 }
 </style>

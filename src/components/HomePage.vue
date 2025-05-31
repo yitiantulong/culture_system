@@ -6,13 +6,6 @@
     </div>
 
     <div class="navigation-cards">
-      <router-link to="/rag-chat" class="nav-card">
-        <div class="card-content">
-          <h2>智能问答</h2>
-          <p>基于RAG技术的智能问答系统，解答您的非遗疑问</p>
-        </div>
-      </router-link>
-
       <router-link to="/chat" class="nav-card">
         <div class="card-content">
           <h2>文化对话</h2>
@@ -26,6 +19,20 @@
           <p>探索中国非物质文化遗产的地理分布</p>
         </div>
       </router-link>
+
+      <router-link to="/rag-chat" class="nav-card">
+        <div class="card-content">
+          <h2>智能问答</h2>
+          <p>基于RAG技术的智能问答系统，解答您的非遗疑问</p>
+        </div>
+      </router-link>
+    </div>
+
+    <div class="heritage-quote-section">
+      <p class="heritage-quote">
+        "历史文化遗产承载着中华民族的基因和血脉，不仅属于我们这一代人，也属于子孙万代。要敬畏历史、敬畏文化、敬畏生态，全面保护好历史文化遗产"
+      </p>
+      <p class="quote-author">——习近平总书记</p>
     </div>
   </div>
 </template>
@@ -57,6 +64,31 @@
   font-size: 1.5rem;
   color: #f0e5d8;
   margin-bottom: 2rem;
+}
+
+.heritage-quote-section {
+  text-align: center;
+  margin-top: 4rem;
+  max-width: 800px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.heritage-quote {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #f0e5d8;
+  font-family: '楷体', cursive;
+  margin-bottom: 1rem;
+}
+
+.quote-author {
+  font-size: 1.1rem;
+  color: #f0e5d8;
+  text-align: right;
+  font-family: '楷体', cursive;
 }
 
 .navigation-cards {

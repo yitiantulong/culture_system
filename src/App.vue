@@ -1,5 +1,10 @@
 <template>
-  <div class="app-container">
+  <div
+    :class="[
+      'app-container',
+      { 'chat-background': isChatPage, 'rag-chat-background': isRAGChatPage },
+    ]"
+  >
     <header v-if="!isHomePage" class="main-header">
       <div class="header-content">
         <h1 class="title">非遗万象：基于RAG增强的非遗问答系统</h1>
@@ -25,6 +30,8 @@ import GlobalNavigation from '@/components/GlobalNavigation.vue'
 
 const route = useRoute()
 const isHomePage = computed(() => route.path === '/')
+const isChatPage = computed(() => route.path === '/chat')
+const isRAGChatPage = computed(() => route.path === '/rag-chat')
 </script>
 
 <style scoped>
@@ -37,6 +44,14 @@ const isHomePage = computed(() => route.path === '/')
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.chat-background {
+  background-image: url('./assets/bamboobook.jpg');
+}
+
+.rag-chat-background {
+  background-image: url('./assets/san1.png');
 }
 
 .main-header {

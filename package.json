@@ -22,10 +22,13 @@
     "@langchain/deepseek": "^0.0.1",
     "axios": "^1.9.0",
     "date-fns": "^4.1.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12",
     "openai": "^4.102.0",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "zod": "^3.25.42"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.1",
